@@ -3,7 +3,8 @@ public class GivenNumbers {
 public int A;
 public int B;
 public int C;
-public void solution(int a, int b, int c) {
+
+public String toString() {
 	StringBuilder sb = new StringBuilder();
 	if(A!=1&&A!=-1) {
 		sb.append(A);
@@ -29,21 +30,23 @@ public void solution(int a, int b, int c) {
 		sb.append("-");
 	}
 	sb.append(Math.abs(C)+"=0");
-	System.out.println(sb);
-if(D(A,B,C)>0) {
-	System.out.println("x1 = "+(-B+Math.sqrt(D(A,B,C))));
-	System.out.println("x2 = "+(-B-Math.sqrt(D(A,B,C))));
+	return sb.toString();
 }
-else if(D(A,B,C)==0) {
-	System.out.println("x = "+(-B+Math.sqrt(D(A,B,C))));
+public String solution() {
+	
+	double discr =(B*B)-(4*A*C);
+
+	String result;
+if(discr>0) {
+	result = "x1 = "+String.format("%.2f",(-B+Math.sqrt(discr)));
+	result +="\nx2 = "+String.format("%.2f",(-B-Math.sqrt(discr)));
+}
+else if(discr==0) {
+	result = "x = "+String.format("%.2f",(-B+Math.sqrt(discr)));
 }
 else {
-	System.out.println("there is not solution");
+	result = "there is not solution";
 }
+return result;
 }
-public double D(int a, int b, int c) {
-	double D=(b*b)-(4*a*c);
-	return D;
-}
-
 }
